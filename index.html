@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LiveCassa: incassa le vendite in live fuori da TikTok</title>
+<meta name="description" content="Raccogli gli ordini dai commenti durante la live, manda a ogni cliente il suo link di pagamento, ricevi il riepilogo delle spedizioni. Zero commissioni sulle vendite, un canone fisso.">
+<meta property="og:title" content="Vendi in live? Incassa fuori dall'app, senza perdere il 9%">
+<meta property="og:description" content="Ordini dai commenti, link di pagamento a fine live, riepilogo spedizioni. Zero commissioni, canone fisso.">
+<style>
+  :root{
+    --bg:#fbf7f0; --ink:#1b1a17; --muted:#6b665c; --card:#ffffff;
+    --accent:#d9480f; --accent-ink:#ffffff; --line:#e7dfd1; --ok:#1f7a4d;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px}
+  header{padding:28px 0 8px}
+  .brand{font-weight:700;letter-spacing:.2px;font-size:18px}
+  .brand small{color:var(--muted);font-weight:500;margin-left:8px}
+  .hero{padding:28px 0 20px}
+  h1{font-size:clamp(30px,6.5vw,44px);line-height:1.12;margin:0 0 16px;letter-spacing:-.6px}
+  .lead{font-size:19px;color:var(--muted);margin:0 0 26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+  form label{display:block;font-weight:600;font-size:15px;margin:12px 0 6px}
+  form input{
+    width:100%;padding:14px 14px;font-size:17px;border:1px solid var(--line);
+    border-radius:10px;background:#fff;color:var(--ink);outline:none
+  }
+  form input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(217,72,15,.15)}
+  button{
+    width:100%;margin-top:16px;padding:16px;font-size:18px;font-weight:700;
+    background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;cursor:pointer
+  }
+  button:active{transform:translateY(1px)}
+  .fine{font-size:14px;color:var(--muted);margin:12px 0 0}
+  .thanks{display:none;padding:10px 0}
+  .thanks h3{margin:0 0 8px;color:var(--ok)}
+  section{padding:30px 0 6px}
+  h2{font-size:24px;margin:0 0 14px;letter-spacing:-.3px}
+  ol.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+  ol.steps li{position:relative;padding:0 0 18px 48px;counter-increment:s}
+  ol.steps li::before{
+    content:counter(s);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;
+    background:var(--ink);color:#fff;font-weight:700;display:grid;place-items:center;font-size:16px
+  }
+  ol.steps b{display:block;font-size:17px;margin-bottom:2px}
+  ol.steps span{color:var(--muted)}
+  .price{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+  .price .big{font-size:42px;font-weight:800;letter-spacing:-1px;line-height:1}
+  .price .big small{font-size:16px;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:6px}
+  .compare{margin-top:14px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:15px}
+  .compare b{color:var(--ink)}
+  details{border-top:1px solid var(--line);padding:14px 0}
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:600;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  details p{margin:10px 0 0;color:var(--muted)}
+  footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
+  footer a{color:inherit}
+  .cta2{margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">LiveCassa <small>per chi vende in live</small></div>
+</header>
+
+<section class="hero">
+  <h1>Vendi in live su TikTok o Instagram? Incassa fuori dall'app, senza perdere fino al 9%.</h1>
+  <p class="lead">Durante la live raccogli gli ordini dai commenti. A fine live ogni cliente riceve il suo link per pagare. Tu ricevi l'elenco di chi ha comprato cosa, pronto per le spedizioni.</p>
+
+  <div class="card" id="box">
+    <form id="f" method="POST" target="hidden_iframe" novalidate>
+      <strong>Primi 20 negozi: 3 mesi gratis.</strong>
+      <label for="contact">WhatsApp o email</label>
+      <input id="contact" name="contact" type="text" inputmode="email" autocomplete="email" placeholder="es. 333 1234567 oppure nome@email.it" required>
+      <label for="shop">Nome del negozio o profilo TikTok/Instagram</label>
+      <input id="shop" name="shop" type="text" placeholder="es. @ilmionegozio" autocomplete="organization">
+      <input type="hidden" name="source" id="source" value="">
+      <button type="submit">Prenota il posto</button>
+      <p class="fine">Nessuna newsletter. Ti scrivo io, una volta, quando e' pronto per provarlo.</p>
+    </form>
+    <div class="thanks" id="thanks">
+      <h3>Segnato. Grazie.</h3>
+      <p>Ti scrivo appena il tuo posto e' attivo. Se nel frattempo vuoi raccontarmi come gestisci oggi gli ordini in live, rispondi al messaggio che riceverai.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Come funziona</h2>
+  <ol class="steps">
+    <li><b>Fai la live come sempre</b><span>Su TikTok o Instagram. I clienti scrivono nei commenti "mio", la taglia, l'offerta all'asta. Niente da installare per loro.</span></li>
+    <li><b>Gli ordini si raccolgono da soli</b><span>Ogni "mio" diventa una riga: chi, cosa, a quanto. Per le aste, chi ha vinto e a che prezzo. Basta foglio e screenshot.</span></li>
+    <li><b>A fine live, un link a testa</b><span>Ogni cliente riceve il suo link e paga con carta, Satispay o PayPal. Tu vedi chi ha pagato e scarichi l'elenco spedizioni.</span></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Quanto costa</h2>
+  <div class="card">
+    <div class="price">
+      <div class="big">29 &euro;<small>al mese</small></div>
+      <div>Zero commissioni sulle vendite. Disdici quando vuoi.</div>
+    </div>
+    <div class="compare">
+      Su <b>3.000 &euro;</b> venduti in un mese, una piattaforma che tiene il 9% si prende <b>270 &euro;</b>. Qui <b>29</b>, che tu venda 500 o 20.000.
+      Restano solo i costi della carta (circa 1,5% + 0,25 a pagamento), che paghi gia' oggi.
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Domande</h2>
+  <details><summary>Devo smettere di usare il carrello di TikTok Shop?</summary><p>No. Lo affianca. Molti negozi usano il carrello per i prodotti a prezzo fisso e i commenti per aste e pezzi unici: LiveCassa serve per quelli.</p></details>
+  <details><summary>I clienti si devono registrare?</summary><p>No. Ricevono un link, pagano, fine. Tu hai nome e indirizzo per la spedizione.</p></details>
+  <details><summary>Dove finiscono i soldi?</summary><p>Sul tuo conto, direttamente. LiveCassa non tocca gli incassi: i pagamenti passano da circuiti gia' esistenti (Stripe, Satispay) collegati a te.</p></details>
+  <details><summary>Chi lo fa?</summary><p>Giorgio, sviluppatore. Lavoro con piccole attivita' e costruisco questo insieme ai primi 20 negozi che entrano: le prime funzioni le decidete voi.</p></details>
+</section>
+
+<section class="cta2">
+  <div class="card">
+    <strong>Vuoi essere tra i primi 20?</strong>
+    <p class="fine" style="margin-top:6px">Lascia WhatsApp o email qui sopra. Tre mesi gratis, poi 29 euro al mese, oppure niente.</p>
+    <button type="button" onclick="document.getElementById('contact').focus();document.getElementById('box').scrollIntoView({behavior:'smooth'})">Torna al modulo</button>
+  </div>
+</section>
+
+<footer>
+  I dati inseriti servono solo per avvisarti dell'apertura. Niente liste, niente cessioni a terzi. Per cancellarti basta rispondere "stop".<br>
+  <a href="mailto:giorgiogiaf0285@gmail.com">giorgiogiaf0285@gmail.com</a>
+</footer>
+
+</div>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none" title="invio"></iframe>
+
+<script>
+  // === CONFIGURAZIONE (vedi LANDING-LIVE.md, sezione "Backend") ===
+  // URL del Google Form: l'URL /viewform diventa /formResponse
+  var FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSdWyzkXcLkCfx6uIut-O-FeFQnPIAAB1BJaK_KMdke6SyGP5w/formResponse";              // es. https://docs.google.com/forms/d/e/XXXX/formResponse
+  var ENTRY_CONTACT = "entry.1090583564";            // es. entry.123456
+  var ENTRY_SHOP    = "entry.1701732721";            // es. entry.234567
+  var ENTRY_SOURCE  = "entry.1507429115";            // es. entry.345678
+  // ================================================================
+
+  var f = document.getElementById('f');
+  var q = new URLSearchParams(location.search);
+  document.getElementById('source').value =
+    (q.get('utm_source') || 'diretto') + '/' + (q.get('utm_campaign') || '') + '/' + (q.get('utm_content') || '');
+
+  if (FORM_ACTION) {
+    f.action = FORM_ACTION;
+    document.getElementById('contact').name = ENTRY_CONTACT;
+    document.getElementById('shop').name = ENTRY_SHOP;
+    document.getElementById('source').name = ENTRY_SOURCE;
+  }
+
+  var submitted = false;
+  f.addEventListener('submit', function (e) {
+    var c = document.getElementById('contact').value.trim();
+    if (c.length < 6) { e.preventDefault(); document.getElementById('contact').focus(); return; }
+    if (!FORM_ACTION) { e.preventDefault(); alert('Modulo non ancora collegato: imposta FORM_ACTION in index.html'); return; }
+    submitted = true;
+  });
+  document.getElementById('hidden_iframe').addEventListener('load', function () {
+    if (!submitted) return;
+    f.style.display = 'none';
+    document.getElementById('thanks').style.display = 'block';
+  });
+</script>
+</body>
+</html>
