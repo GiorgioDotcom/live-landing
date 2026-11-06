@@ -166,15 +166,15 @@
 
   var submitted = false;
   f.addEventListener('submit', function (e) {
+    e.preventDefault();
     var c = document.getElementById('contact').value.trim();
-    if (c.length < 6) { e.preventDefault(); document.getElementById('contact').focus(); return; }
-    if (!FORM_ACTION) { e.preventDefault(); alert('Modulo non ancora collegato: imposta FORM_ACTION in index.html'); return; }
+    if (c.length < 6) { document.getElementById('contact').focus(); return; }
+    if (!FORM_ACTION) { alert('Modulo non ancora collegato: imposta FORM_ACTION in index.html'); return; }
+    if (submitted) return;
     submitted = true;
-  });
-  document.getElementById('hidden_iframe').addEventListener('load', function () {
-    if (!submitted) return;
-    f.style.display = 'none';
-    document.getElementById('thanks').style.display = 'block';
+    var done = function () { f.style.display = 'none'; document.getElementById('thanks').style.display = 'block'; };
+    fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', keepalive: true, body: new URLSearchParams(new FormData(f)) })
+      .then(done, function () { f.submit(); done(); });
   });
 </script>
 </body>
