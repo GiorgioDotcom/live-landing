@@ -64,6 +64,31 @@
   footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
   footer a{color:inherit}
   .cta2{margin-top:26px}
+  .opt{font-weight:500;color:var(--muted)}
+  .pv{margin:0}
+  .pv-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+    color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:3px 10px;margin-bottom:12px}
+  .pv-live{background:var(--ink);color:#f4efe6;border-radius:16px 16px 0 0;padding:16px 16px 18px}
+  .pv-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#b9b2a4;margin-bottom:12px}
+  .pv-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e03131;margin-right:6px;vertical-align:1px}
+  .pv-c{display:flex;gap:8px;align-items:baseline;padding:5px 0;font-size:15px;line-height:1.35}
+  .pv-c b{font-weight:600;color:#d8d1c3;white-space:nowrap}
+  .pv-c span{flex:1;min-width:0}
+  .pv-c.off{opacity:.5}
+  .pv-c i{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+    background:var(--accent);color:#fff;border-radius:6px;padding:2px 7px;white-space:nowrap}
+  .pv-join{background:var(--line);color:var(--muted);font-size:13px;font-weight:600;text-align:center;padding:7px 10px}
+  .pv-orders{background:var(--card);border:1px solid var(--line);border-top:0;border-radius:0 0 16px 16px;padding:6px 16px 14px}
+  .pv-o{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .pv-o .who{font-weight:600}
+  .pv-o .what{grid-column:1;color:var(--muted);font-size:15px}
+  .pv-o .eur{grid-row:1;grid-column:2;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+  .pv-o .st{grid-row:2;grid-column:2;justify-self:end;font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;white-space:nowrap}
+  .st.paid{background:#e3f3ea;color:var(--ok)}
+  .st.sent{background:#fff1e0;color:#a14a08}
+  .pv-sum{display:flex;justify-content:space-between;gap:12px;padding-top:12px;font-size:15px;color:var(--muted)}
+  .pv-sum b{color:var(--ink)}
+  .pv figcaption{font-size:14px;color:var(--muted);margin-top:10px}
 </style>
 </head>
 <body>
@@ -82,7 +107,7 @@
       <strong>Primi 20 negozi: 3 mesi gratis.</strong>
       <label for="contact">WhatsApp o email</label>
       <input id="contact" name="contact" type="text" inputmode="email" autocomplete="email" placeholder="es. 333 1234567 oppure nome@email.it" required>
-      <label for="shop">Nome del negozio o profilo TikTok/Instagram</label>
+      <label for="shop">Nome del negozio o profilo social <span class="opt">(facoltativo)</span></label>
       <input id="shop" name="shop" type="text" placeholder="es. @ilmionegozio" autocomplete="organization">
       <input type="hidden" name="source" id="source" value="">
       <button type="submit">Prenota il posto</button>
@@ -93,6 +118,29 @@
       <p>Ti scrivo appena il tuo posto e' attivo. Se nel frattempo vuoi raccontarmi come gestisci oggi gli ordini in live, rispondi al messaggio che riceverai.</p>
     </div>
   </div>
+</section>
+
+<section>
+  <h2>Come lo vedi tu</h2>
+  <figure class="pv" role="img" aria-label="Anteprima dell'interfaccia: i commenti della live con i 'mio' evidenziati diventano un elenco di ordini con importo e stato del pagamento.">
+    <span class="pv-tag">Anteprima</span>
+    <div class="pv-live">
+      <div class="pv-head"><span><span class="pv-dot"></span>Live in corso</span><span>214 spettatori</span></div>
+      <div class="pv-c"><b>maria.r</b><span>mio taglia M</span><i>ordine</i></div>
+      <div class="pv-c off"><b>luca_88</b><span>quanto costa la spedizione?</span></div>
+      <div class="pv-c"><b>giulia.p</b><span>mio!</span><i>ordine</i></div>
+      <div class="pv-c off"><b>sara.b</b><span>bellissima</span></div>
+      <div class="pv-c"><b>anna.v</b><span>25</span><i>offerta</i></div>
+    </div>
+    <div class="pv-join">diventano il tuo elenco ordini</div>
+    <div class="pv-orders">
+      <div class="pv-o"><span class="who">maria.r</span><span class="eur">29 &euro;</span><span class="what">Maglione beige, taglia M</span><span class="st paid">Pagato</span></div>
+      <div class="pv-o"><span class="who">giulia.p</span><span class="eur">35 &euro;</span><span class="what">Borsa nera</span><span class="st sent">Link inviato</span></div>
+      <div class="pv-o"><span class="who">anna.v</span><span class="eur">25 &euro;</span><span class="what">Asta: giacca vintage</span><span class="st sent">Link inviato</span></div>
+      <div class="pv-sum"><span>3 ordini, 1 pagato</span><b>89 &euro;</b></div>
+    </div>
+    <figcaption>Anteprima dell'interfaccia. LiveCassa e' in costruzione con i primi negozi: la schermata finale puo' cambiare.</figcaption>
+  </figure>
 </section>
 
 <section>
